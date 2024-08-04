@@ -18,11 +18,13 @@ int main()
 {
     Color backgroundColor = Color{20, 160, 133, 255};
 
-    const int screenWidth = 300+1;
-    const int screenHeight = 600+1;
+    const int screenWidth = 500;
+    const int screenHeight = 620;
 
     InitWindow(screenWidth, screenHeight, "Tetris");
     SetTargetFPS(60);
+
+    Font font = LoadFontEx("fonts/monogram.ttf", 64, 0, 0);
 
     Game game = Game();
 
@@ -36,6 +38,7 @@ int main()
         
         BeginDrawing();
         ClearBackground(backgroundColor);
+        
         game.Draw();
         EndDrawing();
     }
