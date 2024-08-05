@@ -10,6 +10,7 @@ Game::Game()
   gameOver = false;
   score = 0;
   level = 1;
+  delay = 0.2;
   statistics = {0, 0, 0, 0, 0, 0, 0};
   InitAudioDevice();
   music = LoadMusicStream("Audio/music.mp3");

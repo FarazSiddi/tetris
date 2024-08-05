@@ -14,6 +14,7 @@ class Game
     bool gameOver;
     int score;
     int level;
+    double delay;
     std::vector<int> statistics;
     Music music;
 

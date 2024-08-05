@@ -34,7 +34,7 @@ int main()
     {
         UpdateMusicStream(game.music);
         game.HandleInput();
-        if(EventTriggered(0.2))
+        if(EventTriggered(game.delay))
         {
             game.MoveBlockDown();
         }
