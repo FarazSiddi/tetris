@@ -6,12 +6,14 @@ class Game
 {
   public:
     Game();
+    ~Game();
     void Draw();
     void HandleInput();
     void MoveBlockDown();
     Grid grid;
     bool gameOver;
     int score;
+    Music music;
 
   private:
     Block GetRandomBlock();
@@ -27,4 +29,6 @@ class Game
     std::vector<Block> blocks;
     Block currentBlock;
     Block nextBlock;
+    Sound rotateSound;
+    Sound clearSound;
 };
