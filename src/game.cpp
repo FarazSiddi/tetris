@@ -44,17 +44,17 @@ std::vector<Block> Game::GetAllBlocks()
 void Game::Draw()
 {
   grid.Draw();
-  currentBlock.Draw(11, 11);
+  currentBlock.Draw(211, 11);
   switch(nextBlock.id)
   {
     case 3:
-      nextBlock.Draw(255, 290);
+      nextBlock.Draw(455, 290);
       break;
     case 4:
-      nextBlock.Draw(255, 280);
+      nextBlock.Draw(455, 280);
       break;
     default:
-      nextBlock.Draw(270, 270);
+      nextBlock.Draw(470, 270);
       break;
   }
 }
