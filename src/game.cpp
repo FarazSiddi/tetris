@@ -9,6 +9,8 @@ Game::Game()
   nextBlock = GetRandomBlock();
   gameOver = false;
   score = 0;
+  level = 1;
+  statistics = {0, 0, 0, 0, 0, 0, 0};
   InitAudioDevice();
   music = LoadMusicStream("Audio/music.mp3");
   PlayMusicStream(music);
@@ -196,6 +198,8 @@ void Game::Reset()
   nextBlock = GetRandomBlock();
   gameOver = false;
   score = 0;
+  level = 1;
+  statistics = {0, 0, 0, 0, 0, 0, 0};
 }
 
 void Game::UpdateScore(int linesCleared, int moveDownPoints)

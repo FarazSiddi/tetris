@@ -13,6 +13,8 @@ class Game
     Grid grid;
     bool gameOver;
     int score;
+    int level;
+    std::vector<int> statistics;
     Music music;
 
   private:

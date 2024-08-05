@@ -50,6 +50,7 @@ int main()
             DrawTextEx(font, "GAME OVER", {520, 565}, 38, 2, WHITE);
         }
         DrawRectangleRounded({520, 55, 170, 60}, 0.3, 6, lightBlue); // score
+        DrawRectangleRounded({520, 490, 170, 60}, 0.3, 6, lightBlue); // level
 
         char scoreText[10];
         sprintf(scoreText, "%d", game.score);
@@ -58,7 +59,9 @@ int main()
         DrawTextEx(font, scoreText, {520 + (170 - textSize.x) / 2, 65}, 38, 2, WHITE);
         DrawRectangleRounded({520, 215, 170, 180}, 0.3, 6, lightBlue); // next block
 
-        DrawRectangleRounded({520, 490, 170, 60}, 0.3, 6, lightBlue); // level
+        char levelText[10];
+        sprintf(levelText, "%d", game.level);
+        DrawTextEx(font, levelText, {520 + (170 - textSize.x) / 2, 500}, 38, 2, WHITE);
 
         DrawRectangleRounded({10, 55, 170, 450}, 0.3, 6, lightBlue); // statistics
         
