@@ -11,16 +11,18 @@ class Game
     void HandleInput();
     void MoveBlockDown();
     Grid grid;
+    std::map<int, int> statistics;
     bool gameOver;
     int score;
     int level;
+    int linesClearedTotal;
     double delay;
-    std::vector<int> statistics;
     Music music;
 
   private:
     Block GetRandomBlock();
     std::vector<Block> GetAllBlocks();
+    void DrawAllBlocks();
     void MoveBlockLeft();
     void MoveBlockRight();
     bool IsBlockOutside();

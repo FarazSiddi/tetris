@@ -10,8 +10,8 @@ Game::Game()
   gameOver = false;
   score = 0;
   level = 1;
+  linesClearedTotal = 0;
   delay = 0.2;
-  statistics = {0, 0, 0, 0, 0, 0, 0};
   InitAudioDevice();
   music = LoadMusicStream("Audio/music.mp3");
   PlayMusicStream(music);
@@ -35,13 +35,14 @@ Block Game::GetRandomBlock()
   }
   int randomIndex = rand() % blocks.size();
   Block block = blocks[randomIndex];
+  statistics[block.id-1]++;
   blocks.erase(blocks.begin() + randomIndex);
   return block;
 }
 
 std::vector<Block> Game::GetAllBlocks()
 {
-  return {IBlock(), JBlock(), LBlock(), OBlock(), SBlock(), TBlock(), ZBlock()};
+  return {LBlock(), JBlock(), IBlock(), OBlock(), SBlock(), TBlock(), ZBlock()};
 }
 
 void Game::Draw()
@@ -59,6 +60,29 @@ void Game::Draw()
     default:
       nextBlock.Draw(470, 270);
       break;
+  }
+
+  DrawAllBlocks();
+}
+
+void Game::DrawAllBlocks()
+{
+  std::vector<Block> blockList = GetAllBlocks();
+  int offsetY = 0;
+  for(Block block: blockList)
+  {
+    block.Draw(-50, 70 + offsetY);
+    switch(block.id)
+    {
+      case 2:
+        offsetY += 85;
+        break;
+      case 3:
+        offsetY -= 10;
+      default:
+        offsetY += 75;
+    }
+
   }
 }
 
@@ -200,7 +224,12 @@ void Game::Reset()
   gameOver = false;
   score = 0;
   level = 1;
-  statistics = {0, 0, 0, 0, 0, 0, 0};
+  delay = 0.2;
+  linesClearedTotal = 0;
+
+  statistics.clear();
+  statistics[currentBlock.id-1]++;
+  statistics[nextBlock.id-1]++;
 }
 
 void Game::UpdateScore(int linesCleared, int moveDownPoints)

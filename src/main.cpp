@@ -2,6 +2,7 @@
 #include "game.h"
 #include "colors.h"
 #include <iostream>
+#include <vector>
 
 double lastUpdateTime = 0.0;
 
@@ -63,7 +64,18 @@ int main()
         sprintf(levelText, "%d", game.level);
         DrawTextEx(font, levelText, {520 + (170 - textSize.x) / 2, 500}, 38, 2, WHITE);
 
-        DrawRectangleRounded({10, 55, 170, 450}, 0.3, 6, lightBlue); // statistics
+
+        std::map<int, char> statisticsText = {{0, '0'}, {1, '0'}, {2, '0'}, {3, '0'}, {4, '0'}, {5, '0'}, {6, '0'}};
+
+        DrawRectangleRounded({10, 55, 230, 535}, 0.3, 6, lightBlue); // statistics
+
+        for(int i = 0; i < 7; i++)
+        {
+            char text[10];
+            sprintf(text, "%d", game.statistics[i]);
+            DrawTextEx(font, text, {110 + (170 - textSize.x) / 2, 75 + (i * 75)}, 38, 2, WHITE);
+        }
+
         
         game.Draw();
         EndDrawing();
